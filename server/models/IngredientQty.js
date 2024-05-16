@@ -6,7 +6,8 @@ const ingredientQtySchema = new Schema({
   },
   ingredient: {
     type: Schema.Types.ObjectId,
-    ref: 'Ingredient'
+    ref: 'Ingredient',
+    required: true
   }
 });
 

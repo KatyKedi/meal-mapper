@@ -6,12 +6,16 @@ const recipeSchema = new Schema({
     required: true,
     trim: true
   },
-  ingredientQty: [
+  ingredientQtys: [
     {
       type: Schema.Types.ObjectId,
       ref: 'IngredientQty'
     }
   ],
+  directions: {
+    type: String,
+    required: true
+  },
   prepTime: {
     type: Integer
   },
