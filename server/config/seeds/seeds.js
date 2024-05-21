@@ -1,11 +1,18 @@
 const db = require('../connection');
 const { User, Category, Ingredient, IngredientQty, Recipe, ShoppingList } = require('../../models');
-const categoryData = require('../categoryData.json')
+const categoryData = require('./categoryData.json')
 const ingredientData = require('./ingredientData.json')
 const ingredientUpdate = require('./ingredientUpdate')
 const recipeSeeds = require('./recipeData')
 
 db.once('open', async () => {
+  const database = db.db;
+  const collections = await database.listCollections().toArray();
+  collections
+    .map((collection) => collection.name)
+    .forEach(async (collectionName) => {
+      database.dropCollection(collectionName);
+    });
 
   await Category.insertMany(categoryData)
 
@@ -15,11 +22,13 @@ db.once('open', async () => {
 
   const recipes = await recipeSeeds()
 
-  await User.create({
+  const user = await User.create({
     email: 'kvincent@instructors.2u.com',
     password: 'password12345',
     recipes
   });
+
+  console.log(user)
 
   console.log('Seeded complete');
 

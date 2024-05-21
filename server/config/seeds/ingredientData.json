@@ -7,6 +7,8 @@
   { "name": "Mayonnaise"},
   { "name": "Sriracha"},
   { "name": "Bread Crumbs"},
+  { "name": "Flour Tortillas"},
+  { "name": "Corn Tortillas"},
   { "name": "Angel Hair Pasta"},
   { "name": "Spaghetti"},
   { "name": "Fettuccine"},
@@ -19,6 +21,8 @@
   { "name": "Tuna"},
   { "name": "Cabbage"},
   { "name": "Red Onion"},
+  { "name": "Avocado"},
+  { "name": "Lime"},
   { "name": "Yellow Onion"},
   { "name": "Green Onion"},
   { "name": "Carrots"},
@@ -29,5 +33,6 @@
   { "name": "Garlic Salt"},
   { "name": "Cumin"},
   { "name": "Black Pepper"},
-  { "name": "Salt"}
+  { "name": "Salt"},
+  { "name": "Olive Oil"}
 ]

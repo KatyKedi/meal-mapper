@@ -4,109 +4,119 @@ module.exports = async () => {
 
   const chickParmIngredients = [
     {
-      ingredient: await Ingredient.findOne({ name: 'Chicken Breast' }),
+      ingredient: (await Ingredient.findOne({ name: 'Chicken Breast' }))._id,
       quantity: '1 per person'
     },
     {
-      ingredient: await Ingredient.findOne({ name: 'Marinara Sauce' }),
+      ingredient: (await Ingredient.findOne({ name: 'Marinara Sauce' }))._id,
       quantity: '1 jar'
     },
     {
-      ingredient: await Ingredient.findOne({ name: 'Mozarella Cheese' }),
+      ingredient: (await Ingredient.findOne({ name: 'Mozarella Cheese' }))._id,
       quantity: '1/4 cup per person'
     },
     {
-      ingredient: await Ingredient.findOne({ name: 'Parmesan Cheese' }),
+      ingredient: (await Ingredient.findOne({ name: 'Parmesan Cheese' }))._id,
       quantity: '1/4 cup per person'
     },
     {
-      ingredient: await Ingredient.findOne({ name: 'Bread Crumbs' })
+      ingredient: (await Ingredient.findOne({ name: 'Bread Crumbs' }))._id
     },
     {
-      ingredient: await Ingredient.findOne({ name: 'Flour' })
+      ingredient: (await Ingredient.findOne({ name: 'Flour' }))._id
     },
     {
-      ingredient: await Ingredient.findOne({ name: 'Eggs' })
+      ingredient: (await Ingredient.findOne({ name: 'Eggs' }))._id
     },
     {
-      ingredient: await Ingredient.findOne({ name: 'Oil' })
+      ingredient: (await Ingredient.findOne({ name: 'Olive Oil' }))._id
     },
     {
-      ingredient: await Ingredient.findOne({ name: 'Black Pepper' })
+      ingredient: (await Ingredient.findOne({ name: 'Black Pepper' }))._id
     },
     {
-      ingredient: await Ingredient.findOne({ name: 'Angel Hair Pasta' }),
+      ingredient: (await Ingredient.findOne({ name: 'Angel Hair Pasta' }))._id,
       quantity: '1/2 packager per 4 people'
     },
     {
-      ingredient: await Ingredient.findOne({ name: 'Salt' }),
+      ingredient: (await Ingredient.findOne({ name: 'Salt' }))._id,
     },
     {
-      ingredient: await Ingredient.findOne({ name: 'Garlic Salt' }),
+      ingredient: (await Ingredient.findOne({ name: 'Garlic Salt' }))._id,
       quantity: '1 teaspoon'
     },
   ]
 
+  console.log(chickParmIngredients)
   const chickParmQtys = await IngredientQty.insertMany(chickParmIngredients)
 
   const chickParm = await Recipe.create({
     name: "Chicken Parmesan",
     ingredientQtys: chickParmQtys,
-    directions: '',
+    directions: [
+      'Preheat the oven to 450 degrees.',
+      'Pound chicken to an even thickness.',
+      'Salt and pepper the chicken on both sides.',
+      'Grab three large shallow bowls. Add flour to one bowl and two eggs to another bowl. In the third bowl, mix bread crumbs with some grated parmesan.',
+      'Bread the chicken: Cover the chicken in flour, then dip in the eggs, then coat in the bread crumb mixture.',
+      'Fry the chicken: heat olive oil on medium high in a large skillet. Cook the chicken about 2 minutes each side.',
+      'Transfer the chicken to a baking dish. Top each breast with marinara sauce and an equal ratio of mozzarella to parmesan cheese.',
+      'Bake the chicken about 15 to 20 minutes.'
+    ],
     prepTime: 30,
     cookTime: 30,
-    type: 'Dinner'
+    types: ['Dinner']
   })
 
   const shrimpTacosIngredients = [
     {
-      ingredient: await Ingredient.findOne({ name: 'Shrimp' }),
+      ingredient: (await Ingredient.findOne({ name: 'Shrimp' }))._id,
       quantity: '1 pound'
     },
     {
-      ingredient: await Ingredient.findOne({ name: 'Cabbage' }),
+      ingredient: (await Ingredient.findOne({ name: 'Cabbage' }))._id,
       quantity: '1 cup'
     },
     {
-      ingredient: await Ingredient.findOne({ name: 'Red Onion' }),
+      ingredient: (await Ingredient.findOne({ name: 'Red Onion' }))._id,
       quantity: '1/4 onion'
     },
     {
-      ingredient: await Ingredient.findOne({ name: 'Avocado' }),
+      ingredient: (await Ingredient.findOne({ name: 'Avocado' }))._id,
       quantity: '1 avocado'
     },
     {
-      ingredient: await Ingredient.findOne({ name: 'Olive Oil' })
+      ingredient: (await Ingredient.findOne({ name: 'Olive Oil' }))._id
     },
     {
-      ingredient: await Ingredient.findOne({ name: 'Lime' }),
+      ingredient: (await Ingredient.findOne({ name: 'Lime' }))._id,
       quantity: '4 limes'
     },
     {
-      ingredient: await Ingredient.findOne({ name: 'Salt' }),
+      ingredient: (await Ingredient.findOne({ name: 'Salt' }))._id,
     },
     {
-      ingredient: await Ingredient.findOne({ name: 'Garlic' }),
+      ingredient: (await Ingredient.findOne({ name: 'Garlic' }))._id,
       quantity: '2 tablespoons'
     },
     {
-      ingredient: await Ingredient.findOne({ name: 'Mayonnaise' }),
+      ingredient: (await Ingredient.findOne({ name: 'Mayonnaise' }))._id,
       quantity: '1/3 cup'
     },
     {
-      ingredient: await Ingredient.findOne({ name: 'Sriracha' }),
+      ingredient: (await Ingredient.findOne({ name: 'Sriracha' }))._id,
       quantity: '2 tablespoons'
     },
     {
-      ingredient: await Ingredient.findOne({ name: 'Garlic Powder' }),
+      ingredient: (await Ingredient.findOne({ name: 'Garlic Powder' }))._id,
       quantity: '1/2 teaspoon'
     },
     {
-      ingredient: await Ingredient.findOne({ name: 'Cumin' }),
+      ingredient: (await Ingredient.findOne({ name: 'Cumin' }))._id,
       quantity: '1/2 teaspoon'
     },
     {
-      ingredient: await Ingredient.findOne({ name: 'Flour Tortillas' })
+      ingredient: (await Ingredient.findOne({ name: 'Flour Tortillas' }))._id
     }
   ]
 

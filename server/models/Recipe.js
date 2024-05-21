@@ -12,17 +12,20 @@ const recipeSchema = new Schema({
       ref: 'IngredientQty'
     }
   ],
-  directions: {
+  directions: [{
     type: String,
     required: true
-  },
+  }],
   prepTime: {
-    type: Integer
+    type: Number
   },
   cookTime: {
-    type: Integer
+    type: Number
   },
-  type: {
+  types: [{
+    type: String
+  }],
+  ethnicity: {
     type: String
   }
 });
