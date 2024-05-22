@@ -47,7 +47,6 @@ module.exports = async () => {
     },
   ]
 
-  console.log(chickParmIngredients)
   const chickParmQtys = await IngredientQty.insertMany(chickParmIngredients)
 
   const chickParm = await Recipe.create({

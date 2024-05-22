@@ -1,5 +1,5 @@
 const db = require('../connection');
-const { User, Category, Ingredient, ShoppingList } = require('../../models');
+const { User, Category, Ingredient, ShoppingList, MealPlan } = require('../../models');
 const categoryData = require('./categoryData.json')
 const ingredientData = require('./ingredientData.json')
 const ingredientUpdate = require('./ingredientUpdate')
@@ -8,11 +8,7 @@ const recipeSeeds = require('./recipeData')
 db.once('open', async () => {
   const database = db.db;
   const collections = await database.listCollections().toArray();
-  collections
-    .map((collection) => collection.name)
-    .forEach(async (collectionName) => {
-      database.dropCollection(collectionName);
-    });
+  collections.forEach(async (collection) => await database.dropCollection(collection.name));
 
   await Category.insertMany(categoryData)
 
@@ -33,11 +29,23 @@ db.once('open', async () => {
     }
   ])
 
+  const mealPlans = await MealPlan.insertMany([
+    {
+      recipes: [recipes[0]],
+      date: '2024/05/30'
+    },
+    {
+      recipes: [recipes[1]],
+      date: '2024/05/31'
+    }
+  ])
+
   const user = await User.create({
     email: 'kvincent@instructors.2u.com',
     password: 'password12345',
     recipes,
-    shoppingLists
+    shoppingLists,
+    mealPlans
   });
 
   console.log(user)

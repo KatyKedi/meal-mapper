@@ -23,6 +23,12 @@ const userSchema = new Schema({
       type: Schema.Types.ObjectId,
       ref: 'ShoppingList'
     }
+  ],
+  mealPlans: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'MealPlan'
+    }
   ]
 });
 

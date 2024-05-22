@@ -5,7 +5,7 @@ const mealPlanSchema = new Schema({
       type: Schema.Types.ObjectId,
       ref: 'Recipe'
   }],
-  day: {
+  date: {
     type: Date,
     required: true
   }
