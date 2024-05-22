@@ -14,22 +14,26 @@ db.once('open', async () => {
 
   const ingredientNames = await Ingredient.insertMany(ingredientData)
 
+  const ingredients = ingredientNames.map(ingredient => ingredient._id)
+
   await ingredientUpdate(ingredientNames)
 
   const recipes = await recipeSeeds()
 
-  const shoppingLists = await ShoppingList.insertMany([
+  const shoppingListData = await ShoppingList.insertMany([
     {
-      ingredients: ingredientNames.filter((ingredient, index) => index % 2 === 0),
+      ingredients: ingredients.filter((ingredient, index) => index % 2 === 0),
       store: 'Walmart'
     },
     {
-      ingredients: ingredientNames.filter((ingredient, index) => index % 2 !== 0),
+      ingredients: ingredients.filter((ingredient, index) => index % 2 !== 0),
       store: 'Target'
     }
   ])
 
-  const mealPlans = await MealPlan.insertMany([
+  const shoppingLists = shoppingListData.map(list => list._id)
+
+  const mealPlanData = await MealPlan.insertMany([
     {
       recipes: [recipes[0]],
       date: '2024/05/30'
@@ -39,6 +43,8 @@ db.once('open', async () => {
       date: '2024/05/31'
     }
   ])
+
+  const mealPlans = mealPlanData.map(list => list._id)
 
   const user = await User.create({
     firstName: 'Dizzy',

@@ -48,10 +48,11 @@ module.exports = async () => {
   ]
 
   const chickParmQtys = await IngredientQty.insertMany(chickParmIngredients)
+  const chickParmQtyIds = chickParmQtys.map(qty => qty._id)
 
   const chickParm = await Recipe.create({
     name: "Chicken Parmesan",
-    ingredientQtys: chickParmQtys,
+    ingredientQtys: chickParmQtyIds,
     directions: [
       'Preheat the oven to 450 degrees.',
       'Pound chicken to an even thickness.',
@@ -120,10 +121,11 @@ module.exports = async () => {
   ]
 
   const shrimpTacosQtys = await IngredientQty.insertMany(shrimpTacosIngredients)
+  const shrimpTacosQtyIds = shrimpTacosQtys.map(qty => qty._id)
 
   const shrimpTacos = await Recipe.create({
     name: "Shrimp Tacos",
-    ingredientQtys: shrimpTacosQtys,
+    ingredientQtys: shrimpTacosQtyIds,
     directions: [
       'In a large bowl, whisk together juice of 3 limes, 2 tablespoons cilantro, 2 tablespoons garlic, 1/2 teaspoon cumin, 1 tablespoon olive oil, and season with salt. Add shrimp and cover with plactic wrap. Let marinate 20 minutes in the refrigerator.',
       'Make the slaw: in a large bowl combine 1 cup cabbage, 1/4 red onion, 1 avocado, 1/4 cup cilantro, juice of 1 lime, 1 tablespoon olive oil, and season with salt. Toss gently to combine.',
@@ -137,5 +139,5 @@ module.exports = async () => {
     ethnicity: 'Mexican'
   })
 
-  return [chickParm, shrimpTacos]
+  return [chickParm._id, shrimpTacos._id]
 }
