@@ -1,5 +1,5 @@
 const db = require('../connection');
-const { User, Category, Ingredient, IngredientQty, Recipe, ShoppingList } = require('../../models');
+const { User, Category, Ingredient, ShoppingList } = require('../../models');
 const categoryData = require('./categoryData.json')
 const ingredientData = require('./ingredientData.json')
 const ingredientUpdate = require('./ingredientUpdate')
@@ -22,10 +22,22 @@ db.once('open', async () => {
 
   const recipes = await recipeSeeds()
 
+  const shoppingLists = await ShoppingList.insertMany([
+    {
+      ingredients: ingredientNames.filter((ingredient, index) => index % 2 === 0),
+      store: 'Walmart'
+    },
+    {
+      ingredients: ingredientNames.filter((ingredient, index) => index % 2 !== 0),
+      store: 'Target'
+    }
+  ])
+
   const user = await User.create({
     email: 'kvincent@instructors.2u.com',
     password: 'password12345',
-    recipes
+    recipes,
+    shoppingLists
   });
 
   console.log(user)

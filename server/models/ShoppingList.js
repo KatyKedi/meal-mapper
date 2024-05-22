@@ -9,14 +9,6 @@ const shoppingListSchema = new Schema({
   ],
   store: {
     type: String
-  },
-  image: {
-    type: String
-  },
-  price: {
-    type: Number,
-    required: true,
-    min: 0.99
   }
 });
 
