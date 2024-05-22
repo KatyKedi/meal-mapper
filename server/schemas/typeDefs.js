@@ -4,20 +4,39 @@ const typeDefs = `
     name: String
   }
 
-  type Product {
+  type Ingredient {
     _id: ID
     name: String
-    description: String
-    image: String
-    quantity: Int
-    price: Float
     category: Category
   }
 
-  type Order {
+  type IngredientQty {
     _id: ID
-    purchaseDate: String
-    products: [Product]
+    ingredient: Ingredient
+    quantity: String
+  }
+
+  type Recipe {
+    _id: ID
+    name: String
+    ingredientQtys: [IngredientQty]
+    directions: [String]
+    prepTime: Number
+    cookTime: Number 
+    types: [String]
+    ethniticy: String
+  }
+
+  type ShoppingList {
+    _id: ID
+    ingredients: [Ingredient]
+    store: String
+  }
+
+  type MealPlan {
+    _id: ID
+    recipe: [Recipe]
+    date: Date
   }
 
   type User {
@@ -25,11 +44,10 @@ const typeDefs = `
     firstName: String
     lastName: String
     email: String
-    orders: [Order]
-  }
-
-  type Checkout {
-    session: ID
+    password: String
+    recipes: [Recipe]
+    shoppingLists: [ShoppingList]
+    mealPlans: [MealPlan]
   }
 
   type Auth {
@@ -38,20 +56,30 @@ const typeDefs = `
   }
 
   type Query {
+    user(_id: ID!): User
+    categoryByName(name: String!): Category
     categories: [Category]
-    products(category: ID, name: String): [Product]
-    product(_id: ID!): Product
-    user: User
-    order(_id: ID!): Order
-    checkout(products: [ID]!): Checkout
+    ingredientByName(name: String!): Ingredient
+    ingredients: [Ingredient]
+    recipeByName(name: String!)
+    recipes: [Recipe]
   }
 
   type Mutation {
-    addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
-    addOrder(products: [ID]!): Order
-    updateUser(firstName: String, lastName: String, email: String, password: String): User
-    updateProduct(_id: ID!, quantity: Int!): Product
     login(email: String!, password: String!): Auth
+    addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
+    addIngredient(name: String!, category: String!): Ingredient
+    addIngredientQty(ingredient: Ingredient!, quantity: String!): IngredientQty
+    addRecipe(name: String!, ingredients: [IngredientQty]!, directions: [String]!, prepTime: Number, cookTime: Number, types: [String], ethnicity: String): Recipe
+    addShoppingList(ingredients: [Ingredient]!, store: String): ShoppingList
+    addMealPlan(recipes: [Recipe]!, date: Date!): MealPlan
+    updateUser(firstName: String, lastName: String, email: String, password: String): User
+    updateRecipe(_id: ID!, name: String!, ingredients: [IngredientQty]!, directions: [String]!, prepTime: Number, cookTime: Number, types: [String], ethnicity: String): Recipe
+    updateShoppingList(_id: ID!, ingredients: [Ingredient]!, store: String): ShoppingList
+    updateMealPlan(_id: ID!, recipes: [Recipe]!, date: Date!): MealPlan
+    deleteRecipe(_id: ID!): Recipe
+    deleteShoppingList(_id: ID!): ShoppingList
+    deleteMealPlan(_id: ID!): MealPlan
   }
 `;
 

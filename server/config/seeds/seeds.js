@@ -41,7 +41,9 @@ db.once('open', async () => {
   ])
 
   const user = await User.create({
-    email: 'kvincent@instructors.2u.com',
+    firstName: 'Dizzy',
+    lastName: 'Dog',
+    email: 'dizzy@dog.com',
     password: 'password12345',
     recipes,
     shoppingLists,
