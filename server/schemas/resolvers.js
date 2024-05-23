@@ -13,10 +13,28 @@ const resolvers = {
       return await Recipe.find().populate({ path: 'ingredientQtys', populate: { path: 'ingredient', populate: 'category' } })
     },
 
+    myRecipes: async (paret, args, context) => {
+      if (context.user) {
+        const user = await User
+          .findById(context.user._id)
+          .populate({path: 'recipes', populate: { path: 'ingredientQtys', populate: 'ingredients'}})
+        return user.recipes
+      }
+      throw AuthenticationError;
+    },
+
     shoppingLists: async (paret, args, context) => {
       if (context.user) {
         const user = await User.findById(context.user._id).populate({path: 'shoppingLists', populate: 'ingredients'})
         return user.shoppingLists
+      }
+      throw AuthenticationError;
+    },
+
+    mealPlans: async (paret, args, context) => {
+      if (context.user) {
+        const user = await User.findById(context.user._id).populate({path: 'mealPlans', populate: 'recipes'})
+        return user.mealPlans
       }
       throw AuthenticationError;
     }

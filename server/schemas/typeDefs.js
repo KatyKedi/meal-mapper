@@ -61,14 +61,12 @@ const typeDefs = `
   }
 
   type Query {
-    user: User
-    categoryByName(name: String!): Category
     categories: [Category]
-    ingredientByName(name: String!): Ingredient
     ingredients: [Ingredient]
-    recipeByName(name: String!): Recipe
     recipes: [Recipe]
+    myRecipes: [Recipe]
     shoppingLists: [ShoppingList]
+    mealPlans: [MealPlan]
   }
 
   type Mutation {
