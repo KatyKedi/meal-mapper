@@ -18,13 +18,13 @@ const typeDefs = `
 
   type Recipe {
     _id: ID
+    description: String
     name: String
     ingredientQtys: [IngredientQty]
     directions: [String]
     prepTime: Int
     cookTime: Int 
     types: [String]
-    ethnicity: String
   }
 
   type ShoppingList {
@@ -75,13 +75,13 @@ const typeDefs = `
     addCategory(name: String!): Category
     addIngredient(name: String!, category: ID!): Ingredient
     addIngredientQty(ingredient: ID!, quantity: String!): IngredientQty
-    addRecipe(name: String!, quantities: [quantityInput]!, directions: [String]!, prepTime: Int, cookTime: Int, types: [String], ethnicity: String): Recipe
+    addRecipe(name: String!, description: String, quantities: [quantityInput]!, directions: [String]!, prepTime: Int, cookTime: Int, types: [String], ethnicity: String): Recipe
     addShoppingList(ingredients: [ID]!, store: String): ShoppingList
     addMealPlan(recipes: [ID]!, date: String!): MealPlan
     updateUser(firstName: String, lastName: String, email: String, password: String): User
     updateCategory(_id: ID!, name: String!): Category
     updateIngredient(_id: ID!, name: String!, category: ID!): Ingredient
-    updateRecipe(_id: ID!, name: String!, quantities: [quantityInput]!, directions: [String]!, prepTime: Int, cookTime: Int, types: [String], ethnicity: String): Recipe
+    updateRecipe(_id: ID!, name: String!, description: String, quantities: [quantityInput]!, directions: [String]!, prepTime: Int, cookTime: Int, types: [String], ethnicity: String): Recipe
     updateShoppingList(_id: ID!, ingredients: [ID]!, store: String): ShoppingList
     updateMealPlan(_id: ID!, recipes: [ID]!, date: String!): MealPlan
     deleteCategory(_id: ID!): Category

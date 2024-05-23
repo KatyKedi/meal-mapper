@@ -52,6 +52,7 @@ module.exports = async () => {
 
   const chickParm = await Recipe.create({
     name: "Chicken Parmesan",
+    description: "A classic italian chicken dish.",
     ingredientQtys: chickParmQtyIds,
     directions: [
       'Preheat the oven to 450 degrees.',
@@ -125,6 +126,7 @@ module.exports = async () => {
 
   const shrimpTacos = await Recipe.create({
     name: "Shrimp Tacos",
+    description: "A fresh Mexican favorite.",
     ingredientQtys: shrimpTacosQtyIds,
     directions: [
       'In a large bowl, whisk together juice of 3 limes, 2 tablespoons cilantro, 2 tablespoons garlic, 1/2 teaspoon cumin, 1 tablespoon olive oil, and season with salt. Add shrimp and cover with plactic wrap. Let marinate 20 minutes in the refrigerator.',
@@ -135,8 +137,7 @@ module.exports = async () => {
     ],
     prepTime: 30,
     cookTime: 5,
-    types: ['Dinner', 'Lunch'],
-    ethnicity: 'Mexican'
+    types: ['Dinner', 'Lunch']
   })
 
   return [chickParm._id, shrimpTacos._id]

@@ -6,6 +6,9 @@ const recipeSchema = new Schema({
     required: true,
     trim: true
   },
+  description: {
+    type: String
+  },
   ingredientQtys: [
     {
       type: Schema.Types.ObjectId,
@@ -24,10 +27,7 @@ const recipeSchema = new Schema({
   },
   types: [{
     type: String
-  }],
-  ethnicity: {
-    type: String
-  }
+  }]
 });
 
 const Recipe = model('Recipe', recipeSchema);
