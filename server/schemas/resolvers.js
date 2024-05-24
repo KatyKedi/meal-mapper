@@ -4,6 +4,7 @@ const { signToken, AuthenticationError } = require('../utils/auth');
 const resolvers = {
 
   Query: {
+    users: async () => await User.find().select('-email, -password'),
 
     categories: async () => await Category.find(),
 
@@ -17,7 +18,8 @@ const resolvers = {
       if (context.user) {
         const user = await User
           .findById(context.user._id)
-          .populate({path: 'recipes', populate: { path: 'ingredientQtys', populate: 'ingredients'}})
+          .populate({path: 'recipes', populate: { path: 'ingredientQtys', populate: 'ingredient'}})
+          console.log(user)
         return user.recipes
       }
       throw AuthenticationError;
@@ -54,6 +56,7 @@ const resolvers = {
       }
 
       const token = signToken(user);
+
       return { token, user };
     },
 

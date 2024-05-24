@@ -8,9 +8,10 @@ import {
 import { setContext } from '@apollo/client/link/context';
 
 import { Provider } from 'react-redux';
-import store from './utils/store';
+// import store from './utils/store';
 
 import Nav from './components/Nav';
+import { Box } from '@chakra-ui/react'
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -34,14 +35,12 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-        <Provider store={store}>
-          <div className='container'>
+        {/* <Provider store={store}> */}
+          <Box h='calc(100vh)'>
             <Nav />
-            <main className='row'>
-              <Outlet /> 
-            </main>
-          </div>
-        </Provider>
+            <Outlet /> 
+          </Box>
+        {/* </Provider> */}
     </ApolloProvider>
   );
 }

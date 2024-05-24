@@ -24,7 +24,7 @@ export const ADD_USER = gql`
 
 export const ADD_RECIPE = gql`
   mutation addRecipe($name: String!, $description: String, $quantities: [quantityInput]!, $directions: [String]!, $prepTime: Int, $cookTime: Int, $types: [String]) {
-    addOrder(name: $name, description: $description, quantities: $quantities, directions: $directions, prepTime: $prepTime, cookTime: $cookTime, types: $types) {
+    addRecipe(name: $name, description: $description, quantities: $quantities, directions: $directions, prepTime: $prepTime, cookTime: $cookTime, types: $types) {
       name
       description
       ingredientQtys {
@@ -41,7 +41,7 @@ export const ADD_RECIPE = gql`
 
 export const ADD_LIST = gql`
   mutation addShoppingList($store: String!, $ingredients: [Ingredient]!) {
-    addOrder(store: $store, ingredients: $ingredients) {
+    addShoppingList(store: $store, ingredients: $ingredients) {
       store
       ingredients {
         name
@@ -55,7 +55,7 @@ export const ADD_LIST = gql`
 
 export const ADD_PLAN = gql`
   mutation addMealPlan($date: String!, $recipes: [Recipe]!) {
-    addOrder(date: $date, recipes: $recipes) {
+    addMealPlan(date: $date, recipes: $recipes) {
       date
       recipes {
         name
@@ -106,7 +106,7 @@ export const UPDATE_LIST = gql`
 
 export const UPDATE_PLAN = gql`
   mutation updateMealPlan($id: ID!, $date: String!, $recipes: [Recipe]!) {
-    updateShoppingList(_id: $id, date: $date, recipes: $recipes) {
+    updateMealPlan(_id: $id, date: $date, recipes: $recipes) {
       _id
       date
       recipes {
