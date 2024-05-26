@@ -3,10 +3,9 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import { ChakraProvider, extendTheme } from '@chakra-ui/react'
 const colors = {
   brand: {
-    900: '#C03221',
-    800: '#F2D0A4',
-    700: '#545E75',
-    600: 'white'
+    red: '#C03221',
+    sand: '#F2D0A4',
+    grey: '#545E75'
   },
 }
 const theme = extendTheme({ colors })
