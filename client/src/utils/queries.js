@@ -26,6 +26,7 @@ export const QUERY_RECIPES = gql`
     recipes {
       _id
       name
+      description
       ingredientQtys {
         ingredient {
           name
@@ -36,7 +37,6 @@ export const QUERY_RECIPES = gql`
       prepTime
       cookTime
       types
-      ethnicity
     }
   }
 `;

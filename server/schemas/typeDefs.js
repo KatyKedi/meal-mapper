@@ -85,6 +85,7 @@ const typeDefs = `
     updateRecipe(_id: ID!, name: String!, description: String, quantities: [quantityInput]!, directions: [String]!, prepTime: Int, cookTime: Int, types: [String]): Recipe
     updateShoppingList(_id: ID!, ingredients: [ID]!, store: String): ShoppingList
     updateMealPlan(_id: ID!, recipes: [ID]!, date: String!): MealPlan
+    deleteUser(_id: ID!): User
     deleteCategory(_id: ID!): Category
     deleteIngredient(_id: ID!): Ingredient
     deleteRecipe(_id: ID!): Recipe

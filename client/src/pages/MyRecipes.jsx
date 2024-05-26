@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { useQuery } from '@apollo/client'
 import { QUERY_MY_RECIPES } from '../utils/queries'
 import Recipe from '../components/Recipe.jsx'
@@ -17,7 +16,7 @@ function MyRecipes() {
   return (
     <SimpleGrid spacing={4} templateColumns='repeat(auto-fill, minmax(200px, 1fr))'>
       {recipes && recipes.map((recipe) => (
-        <Recipe recipe={recipe}/>
+        <Recipe key={recipe._id} recipe={recipe}/>
       ))}
     </SimpleGrid>
   );

@@ -1,14 +1,15 @@
-import { Card, CardHeader, CardBody, CardFooter, Text, Heading, Button } from '@chakra-ui/react'
+import { Card, CardHeader, CardBody, CardFooter, Text, Heading, Button, Image } from '@chakra-ui/react'
 
 function Recipe( { recipe } ) {
 
   return (
-    <Card bg='brand.800'>
+    <Card key={recipe._id} bg='brand.800'>
       <CardHeader>
         <Heading size='md'>{recipe.name}</Heading>
         <Button>Favorite</Button>
       </CardHeader>
       <CardBody>
+        <Image src={recipe.image} alt={recipe.name} />
         <Text>{recipe.description}</Text>
         <CardFooter>
           <Button>View Details</Button>
