@@ -18,5 +18,8 @@
   "homepage": "https://github.com/KatyKedi/meal-mapper#readme",
   "devDependencies": {
     "concurrently": "^8.2.2"
+  },
+  "dependencies": {
+    "@chakra-ui/icons": "^2.1.1"
   }
 }

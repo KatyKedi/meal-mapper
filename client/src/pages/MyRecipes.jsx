@@ -14,7 +14,7 @@ function MyRecipes() {
   }
 
   return (
-    <SimpleGrid spacing={4} templateColumns='repeat(auto-fill, minmax(200px, 1fr))'>
+    <SimpleGrid spacing={10} columns={5}>
       {recipes && recipes.map((recipe) => (
         <Recipe key={recipe._id} recipe={recipe}/>
       ))}
