@@ -5,7 +5,7 @@ module.exports = {
     return await Recipe.find().populate({ path: 'ingredientQtys', populate: { path: 'ingredient', populate: 'category' } })
   },
 
-  myRecipes: async (paret, args, context) => {
+  myRecipes: async (parent, args, context) => {
     if (context.user) {
       const user = await User
         .findById(context.user._id)

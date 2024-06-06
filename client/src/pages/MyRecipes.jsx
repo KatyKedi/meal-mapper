@@ -1,17 +1,20 @@
+import { useState, useEffect } from 'react'
 import { useQuery } from '@apollo/client'
 import { QUERY_MY_RECIPES } from '../utils/queries'
 import Recipe from '../components/Recipe.jsx'
 import { SimpleGrid } from '@chakra-ui/react'
 
 function MyRecipes() {
-  const { data, error } = useQuery(QUERY_MY_RECIPES);
-  let recipes;
+  const [recipes, setRecipes] = useState([])
+  const { loading, data, error } = useQuery(QUERY_MY_RECIPES);
 
-  if (data) {
-    recipes = data.myRecipes
-  } else {
-    console.log(error)
-  }
+  useEffect(() => {
+    if (data) {
+      setRecipes(data.recipes)
+    } else {
+      console.log(error)
+    }
+  }, [data, error])
 
   return (
     <SimpleGrid spacing={10} columns={5}>

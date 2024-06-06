@@ -4,7 +4,7 @@ import { Link as ChakraLink, Button, HStack, Box, Flex, Spacer } from '@chakra-u
 
 function Nav() {
   return (
-    <Flex bg='brand.red' color='white' p={4} as={'nav'} >
+    <Flex h='calc(10%)' bg='brand.red' color='white' p={4} as={'nav'} >
       <ChakraLink as={ReactRouterLink} _hover={{ textDecoration: 'none' }} fontSize='3xl' to='/'>Meal Mapper</ChakraLink>
       <Spacer />
       <HStack spacing={4} justify='end' fontSize='xl'>

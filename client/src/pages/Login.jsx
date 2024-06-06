@@ -11,6 +11,10 @@ import {
   InputGroup,
   InputRightElement,
   Button,
+  Box,
+  Center,
+  Heading,
+  VStack
 } from '@chakra-ui/react'
 
 export default function Login() {
@@ -36,37 +40,42 @@ export default function Login() {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <FormControl>
-        <FormLabel htmlFor='email'>Email</FormLabel>
-        <Input
-          id='email'
-          placeholder='email@example.com'
-          bg='brand.800'
-          onChange={formChange}
-        />
-        <FormLabel htmlFor='password'>Password</FormLabel>
-        <InputGroup size='md'>
-          <Input
-            id='password'
-            type={show ? 'text' : 'password'}
-            placeholder='Enter password'
-            bg='brand.800'
-            onChange={formChange}
-          />
-          <InputRightElement width='4.5rem'>
-            <Button h='1.75rem' size='sm' onClick={() => setShow(!show)}>
-              {show ? 'Hide' : 'Show'}
-            </Button>
-          </InputRightElement>
-        </InputGroup>
-        {error ? (
-          <FormErrorMessage>The provided credentials are incorrect</FormErrorMessage>
-        ) : null}
-      </FormControl>
-      <Button mt={4} colorScheme='teal' type='submit'>
-        Submit
-      </Button>
-    </form>
+    <Center h='calc(90%)'>
+      <VStack>
+        <Heading>Keep Cooking</Heading>
+        <Box maxW='sm' borderWidth='1px' borderRadius='lg' bg='brand.800' onSubmit={handleSubmit}>
+          <FormControl>
+            <FormLabel htmlFor='email'>Email</FormLabel>
+            <Input
+              id='email'
+              placeholder='email@example.com'
+              bg='brand.800'
+              onChange={formChange}
+            />
+            <FormLabel htmlFor='password'>Password</FormLabel>
+            <InputGroup size='md'>
+              <Input
+                id='password'
+                type={show ? 'text' : 'password'}
+                placeholder='Enter password'
+                bg='brand.800'
+                onChange={formChange}
+              />
+              <InputRightElement width='4.5rem'>
+                <Button h='1.75rem' size='sm' onClick={() => setShow(!show)}>
+                  {show ? 'Hide' : 'Show'}
+                </Button>
+              </InputRightElement>
+            </InputGroup>
+            {error ? (
+              <FormErrorMessage>The provided credentials are incorrect</FormErrorMessage>
+            ) : null}
+          </FormControl>
+          <Button mt={4} colorScheme='teal' type='submit'>
+            Submit
+          </Button>
+        </Box>
+      </VStack>
+    </Center>
   )
 }

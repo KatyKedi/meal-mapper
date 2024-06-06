@@ -17,7 +17,7 @@ function Recipe({ recipe }) {
           <Heading color='white' size='md'>{recipe.name}</Heading>
         </Flex>
       </CardHeader>
-      <CardBody p={0} border='1px' borderStyle='solid' borderColor='white'>
+      <CardBody p={0}>
         <VStack >
           <Image boxSize='200px' src={recipe.name === 'Shrimp Tacos' ? tacos : placeholder} alt={recipe.name} rounded={'md'} />
           <Text color='white' >{recipe.description}</Text>
